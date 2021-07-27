@@ -8,7 +8,6 @@ import org.bouncycastle.pkcs.PKCSException;
 import org.bouncycastle.util.io.pem.PemObject;
 import org.bouncycastle.util.io.pem.PemReader;
 import org.bouncycastle.util.io.pem.PemWriter;
-import sun.misc.BASE64Encoder;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -51,12 +50,12 @@ public class KeyPairGenerateUtil {
         KeyPair keyPair = generateKeyPair();
 
         //print private key string
-        String privateKeyString = new BASE64Encoder().encode(keyPair.getPrivate().getEncoded());
+        String privateKeyString = Base64.getEncoder().encodeToString(keyPair.getPrivate().getEncoded());
         System.out.println("private key:");
         System.out.println(privateKeyString);
         System.out.println();
         //print public key string
-        String publicKeyString = new BASE64Encoder().encode(keyPair.getPublic().getEncoded());
+        String publicKeyString = Base64.getEncoder().encodeToString(keyPair.getPublic().getEncoded());
         System.out.println("public key:");
         System.out.println(publicKeyString);
 
